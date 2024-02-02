@@ -8,7 +8,7 @@ class WordModel {
   String word;
   int wordStart;
   int wordEnd;
-  bool get isStartWithAt => word.startsWith("@");
+  bool get isStartWithAt => word.startsWith("#");
   @override
   String toString() {
     return '{word: $word, start: $wordStart, end: $wordEnd}';

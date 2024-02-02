@@ -32,7 +32,6 @@ class MyHomePageState extends State<MyHomePage> {
 
     ///set custom style
     mentionStyle: const TextStyle(
-      color: Colors.deepPurple,
       fontWeight: FontWeight.w800,
     ),
   );
@@ -90,8 +89,8 @@ class MyHomePageState extends State<MyHomePage> {
                       MatchText(
                         pattern: r"\[(@[^:]+):([^\]]+)\]",
                         style: const TextStyle(
-                          color: Colors.indigo,
-                        ),
+                            // color: Colors.indigo,
+                            ),
                         renderWidget: ({required pattern, required text}) {
                           return Text(text);
                         },

@@ -6,7 +6,7 @@ import 'models.dart';
 
 class VChatTextMentionController extends TextEditingController {
   String _generatedRegexPattern = "()";
-  final _pattern = '@';
+  final _pattern = '#';
   WordModel? _lastValidMentionWord;
 
   ///set debounce the delay between the emit of onSearch function
@@ -33,7 +33,7 @@ class VChatTextMentionController extends TextEditingController {
     this.debounce = 500,
     this.appendSpaceOnAdd = true,
     this.mentionStyle = const TextStyle(
-      color: Colors.blue,
+      //  color: Colors.blue,
       fontWeight: FontWeight.w700,
     ),
   }) {
@@ -52,10 +52,9 @@ class VChatTextMentionController extends TextEditingController {
     _controller.text = _controller.value.text.replaceRange(
       selectedMention.wordStart,
       selectedMention.wordEnd,
-      "$_pattern${value.display}${appendSpaceOnAdd ? ' ' : ''}",
+      "${value.display}${appendSpaceOnAdd ? ' ' : ''}",
     );
-    int nextCursorPosition =
-        selectedMention.wordStart + 1 + value.display.length;
+    int nextCursorPosition = selectedMention.wordStart + value.display.length;
     if (appendSpaceOnAdd) nextCursorPosition++;
     _controller.selection = TextSelection.fromPosition(
       TextPosition(offset: nextCursorPosition),
@@ -166,7 +165,7 @@ class VChatTextMentionController extends TextEditingController {
       if (value == null) {
         //that means stop the search immorality
         onSearch!.call(null);
-      } else if (value == "@") {
+      } else if (value == "#") {
         //this means start search by @
         onSearch!.call("");
       } else {
